@@ -30,15 +30,15 @@ jobs:
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-      - name: Ping Local SonarQube
-        run: |
-          ping -c 3 100.112.104.104
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build with Maven
-        run: mvn clean compile
-
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@master
+      - name: Build and Analyze with Maven
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: "http://100.112.104.104:9000"
+        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
