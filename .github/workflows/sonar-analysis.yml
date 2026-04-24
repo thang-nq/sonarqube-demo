@@ -23,22 +23,28 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: maven
 
       - name: Connect to Tailscale
         uses: tailscale/github-action@v2
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-      - name: Cache SonarQube packages
+      - name: 📦 Cache SonarQube packages
         uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Build and Analyze with Maven
+      - name: 💾 Cache local Maven repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: "${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}"
+          restore-keys: ${{ runner.os }}-maven-
+
+      - name: ⚙️ Build and Analyze with Maven
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: "http://100.112.104.104:9000"
+          SONAR_HOST_URL: "http://pw0350kz:9000"
         run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
