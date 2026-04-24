@@ -47,4 +47,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: "http://pw0350kz:9000"
-        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=500
