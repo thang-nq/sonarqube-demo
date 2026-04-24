@@ -13,7 +13,7 @@ class GradeCalculatorServiceTest {
 	void calculateGradeReturnsAForHighScore() {
 		GradeResult result = gradeCalculatorService.calculateGrade(95);
 
-		assertEquals("A1", result.grade());
+		assertEquals("A", result.grade());
 		assertEquals("Excellent", result.description());
 	}
 
