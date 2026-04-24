@@ -16,15 +16,15 @@ class GradeCalculatorServiceTest {
 		assertEquals("A", result.grade());
 		assertEquals("Excellent", result.description());
 	}
-//
-//	@Test
-//	void calculateGradeReturnsCForMiddleScore() {
-//		GradeResult result = gradeCalculatorService.calculateGrade(75);
-//
-//		assertEquals("C", result.grade());
-//		assertEquals("Average", result.description());
-//	}
-//
+
+	@Test
+	void calculateGradeReturnsCForMiddleScore() {
+		GradeResult result = gradeCalculatorService.calculateGrade(75);
+
+		assertEquals("C", result.grade());
+		assertEquals("Average", result.description());
+	}
+
 //	@Test
 //	void calculateGradeReturnsFFailingScore() {
 //		GradeResult result = gradeCalculatorService.calculateGrade(52);
