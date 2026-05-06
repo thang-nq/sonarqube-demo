@@ -21,21 +21,21 @@ class GradeAuditRepositoryIntegrationTest {
 
     @Test
     void saveThenReadByIdPersistsData() {
-        GradeAuditRecord saved = gradeAuditRepository.save(new GradeAuditRecord("Lan", 91));
+        GradeAuditRecord saved = gradeAuditRepository.save(new GradeAuditRecord("Victor", 91));
 
         GradeAuditRecord loaded = gradeAuditRepository.findById(saved.getId()).orElseThrow();
 
-        assertEquals("Lan", loaded.getStudentName());
+        assertEquals("Victor", loaded.getStudentName());
         assertEquals(91, loaded.getScore());
     }
 
     @Test
     void updateAndQueryByStudentNameReflectsLatestValue() {
-        GradeAuditRecord saved = gradeAuditRepository.save(new GradeAuditRecord("Minh", 78));
+        GradeAuditRecord saved = gradeAuditRepository.save(new GradeAuditRecord("Rose", 78));
         saved.setScore(82);
         gradeAuditRepository.save(saved);
 
-        List<GradeAuditRecord> records = gradeAuditRepository.findByStudentName("Minh");
+        List<GradeAuditRecord> records = gradeAuditRepository.findByStudentName("Rose");
 
         assertEquals(1, records.size());
         assertEquals(82, records.getFirst().getScore());
