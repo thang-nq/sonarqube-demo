@@ -18,6 +18,19 @@ class GradeCalculatorServiceTest {
 	}
 
 	@Test
+	void calculateGradeReturnsBForGoodScore() {
+		//arrange
+		Integer score = 80;
+
+		// Act
+		GradeResult result = gradeCalculatorService.calculateGrade(score);
+
+		// Assert
+		assertEquals("B", result.grade());
+		assertEquals("Good", result.description());
+	}
+
+	@Test
 	void calculateGradeReturnsCForMiddleScore() {
 		GradeResult result = gradeCalculatorService.calculateGrade(75);
 

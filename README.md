@@ -2,8 +2,6 @@
 
 This project is a simple Spring Boot app designed for CI/CD demos.
 
-[![Quality Gate Status](http://pw0350kz:9000/api/project_badges/measure?project=com.example%3Alecture-demo&metric=alert_status&token=sqb_5b944686b118b86914d2e5b8239152bb6e5aba40)](http://pw0350kz:9000/dashboard?id=com.example%3Alecture-demo)
-[![Coverage](http://pw0350kz:9000/api/project_badges/measure?project=com.example%3Alecture-demo&metric=coverage&token=sqb_5b944686b118b86914d2e5b8239152bb6e5aba40)](http://pw0350kz:9000/dashboard?id=com.example%3Alecture-demo)
 ## What the example does
 
 It exposes an endpoint for a student score:
